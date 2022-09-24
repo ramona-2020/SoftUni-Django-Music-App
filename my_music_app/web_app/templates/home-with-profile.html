@@ -4,6 +4,8 @@
 <!-- Catalog with Albums-->
 <section id="catalogPage">
 
+    <h1>Hello, <strong>{{ user.username|default:'Guest' }}</strong></h1>
+
     <!--  If No albums in catalog -->
     {% if not albums %}
     <p>No Albums in Catalog!</p>

@@ -29,6 +29,7 @@
       <list>
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/my_music_app/web_app/templates" />
+        <option value="$MODULE_DIR$/my_music_app/users/templates" />
       </list>
     </option>
   </component>

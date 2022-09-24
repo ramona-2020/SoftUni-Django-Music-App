@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+
+    <h2>Sign In</h2>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- Button for Sign In -->
+        <button class="add-album" type="submit">Sign In</button>
+    </form>
+
+    <a href="{% url 'dashboard' %}" class="link-secondary">
+       Back to dashboard
+    </a>
+{% endblock %}

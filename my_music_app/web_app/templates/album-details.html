@@ -25,11 +25,13 @@
                 {% endif %}
             </div>
 
-            <div class="actionBtn">
-                <!-- Album Buttons -->
-                <a href="{% url 'edit_album' album.pk %}" class="edit">Edit</a>
-                <a href="{% url 'delete_album' album.pk %}" class="remove">Delete</a>
-            </div>
+            {% if user.is_authenticated %}
+                <div class="actionBtn">
+                    <!-- Album Buttons -->
+                    <a href="{% url 'edit_album' album.pk %}" class="edit">Edit</a>
+                    <a href="{% url 'delete_album' album.pk %}" class="remove">Delete</a>
+                </div>
+            {% endif %}
 
         </div>
     </div>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action active mb-4" aria-label="True" href="{% url 'add_album' %}">Create Album</a>
+            </div>
+        </div>
+        <div class="col-8"></div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">My Music App</h1>
+        <p class="lead">Hello, {{ user.username|default:'Guest' }}</p>
+
+        <h2>Users list:</h2>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">E-mail</th>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                {% endfor %}
+            </thead>
+        </table>
+      </div>
+    </div>
+{% endblock %}
