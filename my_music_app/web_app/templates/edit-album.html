@@ -3,22 +3,29 @@
 
 {% block page_content %}
 
-<!--Edit Page-->
-<section class="editPage">
-    <form method="post" action="{% url 'edit_album' album.pk %}">
-        <fieldset>
-            <legend>Edit Album</legend>
-            <div class="container">
+    <!--Edit Page-->
+    <section class="editPage">
+        <div class="row">
+            <div class="col-6">
+                <form method="post"
+                      action="{% url 'edit_album' album.pk %}">
+                    <fieldset>
+                        <legend>Edit Album</legend>
+                        <div class="container">
 
-                <!-- Form for Editing Album -->
-                {% csrf_token %}
-                {{ form }}
+                            <!-- Form for Editing Album -->
+                            {% csrf_token %}
+                            {{ form }}
 
-                <!-- Button for Editing Album -->
-                <button class="edit-album" type="submit">Edit Album</button>
+                            <!-- Button for Editing Album -->
+                            <button class="edit-album"
+                                    type="submit">Edit Album
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
-        </fieldset>
-    </form>
-</section>
+        </div>
+    </section>
 
 {% endblock %}

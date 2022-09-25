@@ -9,19 +9,10 @@ fieldset {
 }
 
 fieldset legend{
-  font-weight: 700;
-  font-size: 2em;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
   padding: 0.5em;
   color: white;
   background: #171a1e;
   -o-border-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #2d333b 50%) 1 round;
-  border-width: 1px;
-  border-style: solid;
-  display: block;
-  width: 100%;
-  margin: 0 auto;
 }
 
 input, input + label > i, textarea, select {
@@ -91,11 +82,7 @@ textarea {
 
 .createPage, .editPage {
   font-family: "Lato", serif;
-  font-size: 16px;
-  color: #aab2bd;
   padding: 1em 0 10em;
-  width: 800px;
-  height: auto;
   border-radius: 20px;
 }
 

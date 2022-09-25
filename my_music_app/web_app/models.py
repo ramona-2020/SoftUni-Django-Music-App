@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core import validators
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MinValueValidator
@@ -36,8 +37,29 @@ class Profile(models.Model):
         blank=True
     )
 
+    user = models.OneToOneField(User,
+                                on_delete=models.CASCADE,
+                                null=True)
+    bio = models.TextField(
+        null=True,
+        blank=True
+    )
+    location = models.TextField(
+        null=True,
+        blank=True
+    )
+    birth_date = models.DateField(
+        null=True,
+        blank=True
+    )
+    image = models.ImageField(
+        upload_to='profile_pictures',
+        null=True,
+        blank=True
+    )
+
     def __str__(self):
-        return self.user_name
+        return f"{self.user.username} Profile"
 
 
 class Album(models.Model):

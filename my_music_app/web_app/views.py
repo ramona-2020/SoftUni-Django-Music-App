@@ -1,3 +1,7 @@
+import time
+
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from my_music_app.web_app.forms.album_forms import CreateAlbumForm, EditAlbumForm, DeleteAlbumForm
@@ -42,7 +46,10 @@ def add_album(request):
         form = CreateAlbumForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('homepage')
+            messages.success(request, 'Your album was been created!')
+            # return redirect('homepage')
+        else:
+            messages.error(request, 'Error saving form')
     else:
         form = CreateAlbumForm()
 
@@ -94,11 +101,13 @@ def delete_album(request, pk):
     return render(request, 'delete-album.html', context)
 
 
+@login_required
 def profile_details(request):
     profile = get_profile()
+    current_user = request.user
+
     albums_count = Album.objects.count()
     context = {
-        'profile': profile,
         'albums_count': albums_count
     }
     return render(request, 'profile-details.html', context)
@@ -117,11 +126,3 @@ def delete_profile(request):
         'form': form,
     }
     return render(request, 'profile-delete.html', context)
-
-
-
-
-
-
-
-

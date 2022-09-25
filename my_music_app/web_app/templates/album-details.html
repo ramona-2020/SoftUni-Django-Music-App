@@ -3,39 +3,47 @@
 
 {% block page_content %}
 
-<!--Details Page-->
-<section id="detailsPage">
-    <div class="wrapper">
+    <!--Details Page-->
+    <section id="detailsPage">
+        <div class="row">
+            <div class="col-6">
+                <div class="wrapper">
 
-        <div class="albumCover">
-            <!-- Album Image -->
-            <img src="{{ album.image_url }}" alt="Cover Image">
-        </div>
+                    <!-- Album Image -->
+                    <div class="albumCover"
+                         id="img-container">
+                        <img src="{{ album.image_url }}"
+                             alt="Cover Image">
+                    </div>
 
-        <div class="albumInfo">
+                    <div class="albumInfo">
 
-            <div class="albumText">
-                <!-- Album Info -->
-                <h1>Name: {{ album.name }}</h1>
-                <h3>Artist: {{ album.artist }}</h3>
-                <h4>Genre: {{ album.get_genre_display }}</h4>
-                <h4>Price: ${{ album.price|floatformat:2 }}</h4>
-                {% if album.description %}
-                    <p>Description: {{ album.description }}</p>
-                {% endif %}
-            </div>
+                        <div class="albumText">
+                            <!-- Album Info -->
+                            <h1>Name: {{ album.name }}</h1>
+                            <h3>Artist: {{ album.artist }}</h3>
+                            <h4>Genre: {{ album.get_genre_display }}</h4>
+                            <h4>Price: ${{ album.price|floatformat:2 }}</h4>
+                            {% if album.description %}
+                                <p>Description: {{ album.description }}</p>
+                            {% endif %}
+                        </div>
 
-            {% if user.is_authenticated %}
-                <div class="actionBtn">
-                    <!-- Album Buttons -->
-                    <a href="{% url 'edit_album' album.pk %}" class="edit">Edit</a>
-                    <a href="{% url 'delete_album' album.pk %}" class="remove">Delete</a>
+                        {% if user.is_authenticated %}
+                            <div class="actionBtn">
+                                <!-- Album Buttons -->
+                                <a href="{% url 'edit_album' album.pk %}"
+                                   class="edit">Edit</a>
+                                <a href="{% url 'delete_album' album.pk %}"
+                                   class="remove">Delete</a>
+                            </div>
+                        {% endif %}
+
+                    </div>
                 </div>
-            {% endif %}
-
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 {% endblock %}

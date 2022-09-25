@@ -8,4 +8,7 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls')),
     path('', include('my_music_app.web_app.urls')),
     path('', include('my_music_app.users.urls')),
-] + static(settings.MEDIA_URL, media_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, media_root=settings.MEDIA_ROOT)

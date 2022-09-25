@@ -1,35 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block page_content %}
-<!-- Catalog with Albums-->
-<section id="catalogPage">
+    <!-- Catalog with Albums-->
+    <section id="catalogPage">
 
-    <h1>Hello, <strong>{{ user.username|default:'Guest' }}</strong></h1>
+        <h1>Hello, <strong>{{ user.username|default:'Guest' }}</strong></h1>
 
-    <!--  If No albums in catalog -->
-    {% if not albums %}
-    <p>No Albums in Catalog!</p>
-    {% else %}
+        <!--  If No albums in catalog -->
+        {% if not albums %}
+            <p>No Albums in Catalog!</p>
+        {% else %}
 
-    <!-- If albums in catalog -->
-    <h1>All Albums</h1>
-    {% for album in albums %}
-         <div class="card-box">
-            <img src="{{ album.image_url }}" alt="Cover Image">
-            <div>
-                <div class="text-center">
-                    <p class="name">Name: {{ album.name }}</p>
-                    <p class="artist">Artist: {{ album.artist }}</p>
-                    <p class="genre">Genre: {{ album.get_genre_display }}</p>
-                    <p class="price">Price: ${{ album.price|floatformat:2 }}</p>
+            <!-- If albums in catalog -->
+            <h1>All Albums</h1>
+            {% for album in albums %}
+                <div class="card-box">
+                    <img src="{{ album.image_url }}"
+                         alt="Cover Image">
+                    <div>
+                        <div class="text-center">
+                            <p class="name">Name: {{ album.name }}</p>
+                            <p class="artist">Artist: {{ album.artist }}</p>
+                            <p class="genre">Genre: {{ album.get_genre_display }}</p>
+                            <p class="price">Price: ${{ album.price|floatformat:2 }}</p>
+                        </div>
+                        <div class="btn-group">
+                            <a href="{% url 'album_details' album.pk %}">Details</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="btn-group">
-                    <a href="{% url 'album_details' album.pk %}">Details</a>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
+            {% endfor %}
 
-    {% endif %}
-</section>
+        {% endif %}
+    </section>
 {% endblock %}
